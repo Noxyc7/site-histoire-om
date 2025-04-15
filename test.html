@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Popup</title>
+    <style>
+        .popup-text {
+            display: none;
+            background-color: #e0f0ff;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .clickable-title {
+            cursor: pointer;
+            color: #0055a5;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .clickable-title:hover {
+            color: #003366;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+<section class="popup-section">
+    <h2 class="clickable-title">Clique ici pour voir la bulle</h2>
+    <div class="popup-text">
+        <p>Bravo ! La bulle fonctionne 🥳</p>
+    </div>
+</section>
+
+<!-- Appel du script -->
+<script src="popup.js"></script>
+
+</body>
+</html>

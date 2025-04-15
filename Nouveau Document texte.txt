@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Histoire de l'Olympique de Marseille</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>L'Histoire de l'Olympique de Marseille</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="Origines.html">Origines</a></li>
+                    <li><a href="grandes-epreuves.html">Grandes Épreuves</a></li>
+                    <li><a href="succès.html">Succès</a></li>
+                    <li><a href="legendes.html">Légendes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Intro animée -->
+    <div id="intro-text"></div>
+
+    <main class="container">
+        <section class="popup-section">
+            <h2 class="clickable-title">Les Origines</h2>
+            <div class="popup-text">
+                <p>L'Olympique de Marseille (OM) a été fondé en 1899...</p>
+            </div>
+        </section>
+
+        <section class="popup-section">
+            <h2 class="clickable-title">Les Grandes Épreuves</h2>
+            <div class="popup-text">
+                <p>Au fil des années, l'OM a traversé des moments difficiles...</p>
+            </div>
+        </section>
+
+        <section class="popup-section">
+            <h2 class="clickable-title">Les Succès</h2>
+            <div class="popup-text">
+                <p>En plus de la Ligue des Champions, l'OM a remporté...</p>
+            </div>
+        </section>
+
+        <section class="popup-section">
+            <h2 class="clickable-title">Les Légendes de l'OM</h2>
+            <div class="popup-text">
+                <p>De nombreux joueurs légendaires ont marqué l'histoire de l'OM...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 L'Histoire de l'Olympique de Marseille - Tous droits réservés</p>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        // Intro animée
+        const introText = "Bienvenue sur l'histoire de l'Olympique de Marseille...";
+        const introElement = document.getElementById("intro-text");
+        let i = 0;
+
+        function typeText() {
+            if (i < introText.length) {
+                introElement.innerHTML += introText.charAt(i);
+                i++;
+                setTimeout(typeText, 50);
+            } else {
+                setTimeout(() => {
+                    introElement.style.transition = "opacity 1s ease";
+                    introElement.style.opacity = "0";
+                    setTimeout(() => {
+                        introElement.remove();
+                    }, 1000);
+                }, 3000);
+            }
+        }
+
+        typeText();
+
+        // Bulles interactives
+        document.addEventListener("DOMContentLoaded", function () {
+            const titles = document.querySelectorAll(".clickable-title");
+
+            titles.forEach(title => {
+                title.addEventListener("click", () => {
+                    const popup = title.nextElementSibling;
+
+                    // Fermer toutes les autres bulles
+                    document.querySelectorAll(".popup-text").forEach(p => {
+                        if (p !== popup) {
+                            p.style.display = "none";
+                            p.classList.remove("fade-in", "fade-out");
+                        }
+                    });
+
+                    // Afficher ou cacher celle cliquée
+                    if (popup.style.display === "block") {
+                        popup.classList.add("fade-out");
+                        setTimeout(() => {
+                            popup.style.display = "none";
+                            popup.classList.remove("fade-in", "fade-out");
+                        }, 500);
+                    } else {
+                        popup.style.display = "block";
+                        setTimeout(() => {
+                            popup.classList.add("fade-in");
+                        }, 10);
+                    }
+                });
+            });
+
+            // Suppression de la fermeture automatique (aucun événement global ici)
+        });
+    </script>
+
+</body>
+</html>

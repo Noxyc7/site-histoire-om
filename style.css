@@ -1,0 +1,232 @@
+/* Style général */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #F4F4F4; /* Gris clair pour le fond */
+    color: #333333; /* Gris foncé pour le texte */
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* En-tête */
+header {
+    background: linear-gradient(90deg, #003366, #66B2FF); /* Bleu foncé vers bleu clair */
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+/* Navigation */
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #FFA07A; /* Accent orange doux pour hover */
+    text-decoration: underline;
+}
+
+/* Carrousel d'images */
+.carousel {
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.carousel img {
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.carousel:hover img {
+    transform: scale(1.1);
+}
+
+/* Texte d'introduction animé */
+#intro-text {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 30px 0;
+    font-style: italic;
+    color: #003366; /* Bleu foncé pour le texte d'introduction */
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8); /* Fond blanc cassé légèrement transparent */
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    z-index: 2000;
+}
+
+/* Sections */
+section {
+    background-color: #FAFAFA; /* Blanc cassé pour les sections */
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #003366; /* Bleu foncé pour les titres de section */
+}
+
+section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Image des sections */
+.section-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Popup pour les sections */
+.popup-section {
+    position: relative;
+    z-index: 1000;
+}
+
+.popup-text {
+    display: none;
+    background-color: #e0f0ff; /* Bleu clair pour le fond de la popup */
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 1001;
+}
+
+.popup-text.visible {
+    display: block;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* Pied de page */
+footer {
+    background-color: #003366; /* Bleu foncé pour le pied de page */
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+/* Animation de survol sur les titres */
+.clickable-title {
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.clickable-title:hover {
+    color: #66B2FF; /* Bleu clair au survol des titres */
+}
+
+/* Image spécifique (réduction des images de l'OM) */
+img[src="images_om-image1.jpg"],
+img[src="images_om-image2.jpg"],
+img[src="images_om-image3.jpg"] {
+    max-width: 80%; /* Limite la largeur à 80% du conteneur */
+    height: auto; /* Garde les proportions de l'image */
+    display: block;
+    margin: 20px auto; /* Centrer les images et ajouter de l'espace autour */
+}
+
+/* Si tu veux une taille plus petite, utilise une classe "small" */
+img[src="images_om-image1.jpg"].small,
+img[src="images_om-image2.jpg"].small,
+img[src="images_om-image3.jpg"].small {
+    max-width: 400px; /* Limite la largeur à 400px */
+    height: auto;
+}
+
+/* Optimisation mobile */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .popup-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .popup-text {
+        padding: 10px;
+    }
+
+    .carousel img {
+        max-width: 100%;
+    }
+}
